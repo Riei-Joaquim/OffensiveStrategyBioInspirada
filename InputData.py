@@ -11,5 +11,8 @@ class InputData:
         self.action = action
         self.success = success
 
-    def discrete_input(self):
-        return self
+    def discrete_function(self, func=None):
+        if func is None:
+            return self
+        else:
+            return func(self)

@@ -16,7 +16,7 @@ class AttackInformationTree:
         self.dribbling = {}
 
     def insert(self, inputData: InputData):
-        inputDataDiscrete = inputData.discrete_input()
+        inputDataDiscrete = inputData.discrete_function()
         if inputDataDiscrete.action == 0:
             if inputDataDiscrete.ashoot not in self.shooting:
                 self.shooting[inputDataDiscrete.ashoot] = {}

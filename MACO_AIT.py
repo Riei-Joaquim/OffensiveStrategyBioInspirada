@@ -29,6 +29,9 @@ if __name__ == "__main__":
     data = []
     data.append([0, 0, 0, 0, 0, 0, 0, 0])
     data.append([0, 0, 0, 0, 0, 0, 0, 1])
+    data.append([1, 0, 0, 0, 0, 0, 0, 0])
+    data.append([1, 0, 0, 0, 0, 0, 0, 1])
+    data.append([1, 2, 0, 0, 0, 0, 0, 1])
     data.append([0, 0, 0, 0, 0, 0, 1, 1])
     data.append([0, 0, 0, 0, 0, 0, 2, 0])
     maco = MACO_AIT()
