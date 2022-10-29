@@ -4,25 +4,70 @@ from InputData import InputData
 
 class MACO_AIT:
     def __init__(self):
+        pass
+
+    def initialize(self, size):
         self.ait = AttackInformationTree()
+        self.temp = 0
+        self.pheromone = [0] * size
+        self.access = [0] * size
+        self.heuristic = [0] * size
 
     def populate(self, data):
-        t = 0
+        for it, i in enumerate(data):
+            inputData = InputData(i[0], i[1], i[2], i[3], i[4], i[5])
 
-        for i in data:
-            self.ait.insert(inputData=InputData(
-                ashoot=i[0],
-                dshoot=i[1],
-                apass=i[2],
-                dintp=i[3],
-                ddrib=i[4],
-                dintd=i[5],
-                action=i[6],
-                success=i[7]
-            ))
-            t += 1
-            if t % 1000 == 0:
-                print("Processed {} rows".format(t))
+            #shoot
+            if inputData.action == 0:
+                if inputData.ashoot in self.ait.shooting:
+                    if inputData.dshoot in self.ait.shooting:
+                        find = True
+                    else:
+                        find = False
+                else:
+                    find = False
+            #pass
+            elif inputData.action == 1:
+                if inputData.apass in self.ait.passing:
+                    if inputData.dintp in self.ait.passing:
+                        find = True
+                    else:
+                        find = False
+                else:
+                    find = False
+            #dribble
+            elif inputData.action == 2:
+                if inputData.ddrib in self.ait.dribbling:
+                    if inputData.dintd in self.ait.dribbling:
+                        find = True
+                    else:
+                        find = False
+                else:
+                    find = False
+
+            #find the state on the tree
+            if find:
+                pass
+            else:
+                self.ait.insert(inputData)
+
+    def pheromone(self, inputData, index):
+        evaporationCoefficient = 0.1
+        deltaTau = 1
+
+        if(inputData.success):
+            self.pheromone[index] = (1 - evaporationCoefficient) * self.pheromone[index] + deltaTau * 3
+        else:
+            self.pheromone[index] = (1 - evaporationCoefficient) * self.pheromone[index] + deltaTau * 0
+    
+    def access(self, inputData, index):
+        if(inputData.success):
+            self.access[index] += 1
+        else:
+            self.access[index] += 0
+
+    def similarity(self, inputData, index):
+        pass
 
 
 if __name__ == "__main__":

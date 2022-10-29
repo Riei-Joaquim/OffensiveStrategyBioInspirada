@@ -51,11 +51,11 @@ class InputData:
 
         # Action
         if self.action == 'Shooting':
-            self.action = 1
+            self.action = 0
         elif self.action == 'Passing':
-            self.action = 2
+            self.action = 1
         elif self.action == 'Dribbling':
-            self.action = 3
+            self.action = 2
 
         print('Result')
         print(self.ashoot, self.dshoot, self.apass, self.dintp, self.ddrib, self.dintd, self.action, self.success)
