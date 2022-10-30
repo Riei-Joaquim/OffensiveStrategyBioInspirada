@@ -59,3 +59,20 @@ class AttackInformationTree:
         return str("Shooting: " + json.dumps(self.shooting, sort_keys=True, indent=4)) + \
             str("\n\nPassing: " + json.dumps(self.passing, sort_keys=True, indent=4)) + \
             str("\n\nDribbling: " + json.dumps(self.dribbling, sort_keys=True, indent=4))
+
+    def export_trees(self, file=None):
+        big_tree = {
+            "shooting": self.shooting,
+            "passing": self.passing,
+            "dribbling": self.dribbling
+        }
+
+        with open('ait.json' if file is None else file, 'w') as outfile:
+            json.dump(big_tree, outfile)
+
+    def import_trees(self, file=None):
+        with open('ait.json' if file is None else file) as json_file:
+            big_tree = json.load(json_file)
+            self.shooting = big_tree["shooting"]
+            self.passing = big_tree["passing"]
+            self.dribbling = big_tree["dribbling"]

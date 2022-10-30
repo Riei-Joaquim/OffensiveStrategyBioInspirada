@@ -72,8 +72,11 @@ class MACO_AIT:
             self.preference[i] = (pow(self.pheromone[i], alfa) * pow(self.heuristic[i], beta)) / totalPreference
 
     def populate(self, data):
+
+        self.initialize(len(data))
+
         for it, i in enumerate(data):
-            inputData = InputData(i[0], i[1], i[2], i[3], i[4], i[5])
+            inputData = InputData(i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7])
 
             #shoot
             if inputData.action == 0:
@@ -116,7 +119,8 @@ class MACO_AIT:
             
             self.preference(inputData, 2, 4)
 
-
+    def export_trees(self):
+        self.ait.export(file="ait.json")
 
 
 
