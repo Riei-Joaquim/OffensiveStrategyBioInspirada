@@ -17,13 +17,32 @@ class AttackInformationTree:
 
     def insert(self, inputData: InputData):
         inputDataCopy = inputData
-        inputDataCopy.discrete_function()
         if inputDataCopy.action == 0:
             if inputDataCopy.ashoot not in self.shooting:
                 self.shooting[inputDataCopy.ashoot] = {}
             if inputDataCopy.dshoot not in self.shooting[inputDataCopy.ashoot]:
                 self.shooting[inputDataCopy.ashoot][inputDataCopy.dshoot] = {
                     "fail": 0, "succ": 0, "sucRate": 0, "preference": 0}
+        elif inputDataCopy.action == 1:
+            if inputDataCopy.apass not in self.passing:
+                self.passing[inputDataCopy.apass] = {}
+            if inputDataCopy.dintp not in self.passing[inputDataCopy.apass]:
+                self.passing[inputDataCopy.apass][inputDataCopy.dintp] = {
+                    "fail": 0, "succ": 0, "sucRate": 0, "preference": 0}
+        elif inputDataCopy.action == 2:
+            if inputDataCopy.ddrib not in self.dribbling:
+                self.dribbling[inputDataCopy.ddrib] = {}
+            if inputDataCopy.dintd not in self.dribbling[inputDataCopy.ddrib]:
+                self.dribbling[inputDataCopy.ddrib][inputDataCopy.dintd] = {
+                    "fail": 0, "succ": 0, "sucRate": 0, "preference": 0}
+
+    def update_leaf(self, inputData, succ_rate, pref):
+        inputDataCopy = inputData
+        if inputDataCopy.action == 0:
+            self.shooting[inputDataCopy.ashoot][inputDataCopy.dshoot][
+                "sucRate"] = succ_rate
+            self.shooting[inputDataCopy.ashoot][inputDataCopy.dshoot][
+                "preference"] = pref
             if inputDataCopy.success:
                 self.shooting[inputDataCopy.ashoot][inputDataCopy.dshoot][
                     "succ"] += 1
@@ -31,11 +50,10 @@ class AttackInformationTree:
                 self.shooting[inputDataCopy.ashoot][inputDataCopy.dshoot][
                     "fail"] += 1
         elif inputDataCopy.action == 1:
-            if inputDataCopy.apass not in self.passing:
-                self.passing[inputDataCopy.apass] = {}
-            if inputDataCopy.dintp not in self.passing[inputDataCopy.apass]:
-                self.passing[inputDataCopy.apass][inputDataCopy.dintp] = {
-                    "fail": 0, "succ": 0, "sucRate": 0, "preference": 0}
+            self.passing[inputDataCopy.apass][inputDataCopy.dintp][
+                "sucRate"] = succ_rate
+            self.passing[inputDataCopy.apass][inputDataCopy.dintp][
+                "preference"] = pref
             if inputDataCopy.success:
                 self.passing[inputDataCopy.apass][inputDataCopy.dintp][
                     "succ"] += 1
@@ -43,11 +61,11 @@ class AttackInformationTree:
                 self.passing[inputDataCopy.apass][inputDataCopy.dintp][
                     "fail"] += 1
         elif inputDataCopy.action == 2:
-            if inputDataCopy.ddrib not in self.dribbling:
-                self.dribbling[inputDataCopy.ddrib] = {}
-            if inputDataCopy.dintd not in self.dribbling[inputDataCopy.ddrib]:
-                self.dribbling[inputDataCopy.ddrib][inputDataCopy.dintd] = {
-                    "fail": 0, "succ": 0, "sucRate": 0, "preference": 0}
+            self.dribbling[inputDataCopy.ddrib][inputDataCopy.dintd][
+                "sucRate"] = succ_rate
+            self.dribbling[inputDataCopy.ddrib][inputDataCopy.dintd][
+                "preference"] = pref
+
             if inputDataCopy.success:
                 self.dribbling[inputDataCopy.ddrib][inputDataCopy.dintd][
                     "succ"] += 1
