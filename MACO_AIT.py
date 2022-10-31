@@ -66,13 +66,13 @@ class MACO_AIT:
                     self.pheromone[i] += 3
 
     def _heuristic(self, data):
-        totalAcess = 0
+        totalAccess = 0
 
         for i in self.access:
-            totalAcess += i
+            totalAccess += i
 
         for (it, i) in enumerate(data):
-            self.heuristic[it] = self.access[it] / totalAcess
+            self.heuristic[it] = self.access[it] / totalAccess
 
     def _preference(self, data, alfa, beta):
         totalPreference = 0
@@ -192,13 +192,26 @@ if __name__ == "__main__":
 
     df = pd.read_csv('test.csv')
 
+    stats = {}
     for i in range(len(df)):
         if df.iloc[i]["action"] == "s":
             action = 0
+            if df.iloc[i]["action"] in stats:
+                stats[df.iloc[i]["action"]] += 1
+            else:
+                stats[df.iloc[i]["action"]] = 1
         elif df.iloc[i]["action"] == "p":
             action = 1
+            if df.iloc[i]["action"] in stats:
+                stats[df.iloc[i]["action"]] += 1
+            else:
+                stats[df.iloc[i]["action"]] = 1
         elif df.iloc[i]["action"] == "d":
             action = 2
+            if df.iloc[i]["action"] in stats:
+                stats[df.iloc[i]["action"]] += 1
+            else:
+                stats[df.iloc[i]["action"]] = 1
 
         if df.iloc[i]["result"] == "sucess":
             result = 1
@@ -227,4 +240,5 @@ if __name__ == "__main__":
     #     print(i)
     #     print(maco.hash[i][0].tuple)
     print(len(maco.hash))
-    maco._export_trees()
+    maco._export_trees(file="ait2.json")
+    print(stats)
