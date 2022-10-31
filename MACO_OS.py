@@ -40,30 +40,16 @@ class MACO_OS:
         self.thefail = 0
         self.act = random.randint(0, 3)
 
-        find = True
+        find = False
         if str(discretization[0]) in self.ait.shooting:
             if str(discretization[1]) in self.ait.shooting[str(discretization[0])]:
+                find = True
                 self.pref = self.ait.shooting[str(discretization[0])][
                     str(discretization[1])]["preference"]
                 self.fail = self.ait.shooting[str(discretization[0])][
                     str(discretization[1])]["fail"]
                 self.act = 0
-        elif str(discretization[2]) in self.ait.passing:
-            if str(discretization[3]) in self.ait.passing[str(discretization[2])]:
-                self.pref = self.ait.passing[str(discretization[2])][
-                    str(discretization[3])]["preference"]
-                self.fail = self.ait.passing[str(discretization[2])][
-                    str(discretization[3])]["fail"]
-                self.act = 1
-        elif str(discretization[4]) in self.ait.dribbling:
-            if str(discretization[5]) in self.ait.dribbling[str(discretization[4])]:
-                self.pref = self.ait.dribbling[str(discretization[4])][
-                    str(discretization[5])]["preference"]
-                self.fail = self.ait.dribbling[str(discretization[4])][
-                    str(discretization[5])]["fail"]
-                self.act = 2
-        else:
-            find = False
+        if not find:
             x_1 = (discretization[0], discretization[1])
             paths = []
             for k, v in self.ait.shooting.items():
@@ -72,12 +58,61 @@ class MACO_OS:
                     dist = self.euclidean_distance(x_1, x_2)
                     paths.append((dist, x_2, v2["preference"], v2["fail"], 0))
 
+            paths.sort(key=lambda x: x[0])
+            first = paths[0]
+            second = paths[1]
+
+            self.pref = (first[2] + second[2]) / 2
+            self.fail = (first[3] + second[3]) / 2
+            self.act = 1
+
+        if self.pref > self.bstpref:
+            self.bstpref = self.pref
+            self.thefail = self.fail
+
+        find = False
+        if str(discretization[2]) in self.ait.passing:
+            if str(discretization[3]) in self.ait.passing[str(discretization[2])]:
+                find = True
+                self.pref = self.ait.passing[str(discretization[2])][
+                    str(discretization[3])]["preference"]
+                self.fail = self.ait.passing[str(discretization[2])][
+                    str(discretization[3])]["fail"]
+                self.act = 1
+
+        if not find:
+            x_1 = (discretization[0], discretization[1])
+            paths = []
             for k, v in self.ait.passing.items():
                 for k2, v2 in v.items():
                     x_2 = (k, k2)
                     dist = self.euclidean_distance(x_1, x_2)
                     paths.append((dist, x_2, v2["preference"], v2["fail"], 1))
 
+            paths.sort(key=lambda x: x[0])
+            first = paths[0]
+            second = paths[1]
+
+            self.pref = (first[2] + second[2]) / 2
+            self.fail = (first[3] + second[3]) / 2
+
+        if self.pref > self.bstpref:
+            self.bstpref = self.pref
+            self.thefail = self.fail
+
+        find = False
+        if str(discretization[4]) in self.ait.dribbling:
+            if str(discretization[5]) in self.ait.dribbling[str(discretization[4])]:
+                find = True
+                self.pref = self.ait.dribbling[str(discretization[4])][
+                    str(discretization[5])]["preference"]
+                self.fail = self.ait.dribbling[str(discretization[4])][
+                    str(discretization[5])]["fail"]
+                self.act = 2
+        if not find:
+            find = False
+            x_1 = (discretization[0], discretization[1])
+            paths = []
             for k, v in self.ait.dribbling.items():
                 for k2, v2 in v.items():
                     x_2 = (k, k2)
@@ -90,24 +125,12 @@ class MACO_OS:
 
             self.pref = (first[2] + second[2]) / 2
             self.fail = (first[3] + second[3]) / 2
-            # action = first[4]
 
-            self.stats["first"][first[4]] += 1
-
-            self.stats["second"][second[4]] += 1
-
-        if find:
-            self.stats["find"] += 1
-        else:
-            self.stats["not_find"] += 1
-
-        print("Preference: ", self.pref)
-        print("Best: ", self.bstpref)
         if self.pref > self.bstpref:
             self.bstpref = self.pref
             self.thefail = self.fail
 
-        if self.bstpref < 0.001:
+        if self.bstpref < 0.00005:
             self.act = 3
         return self.act
 
