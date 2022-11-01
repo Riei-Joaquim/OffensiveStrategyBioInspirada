@@ -190,7 +190,7 @@ class MACO_AIT:
 if __name__ == "__main__":
     data = []
 
-    df = pd.read_csv('test.csv')
+    df = pd.read_csv('dataset.csv')
 
     stats = {}
     for i in range(len(df)):
@@ -236,9 +236,6 @@ if __name__ == "__main__":
     maco = MACO_AIT()
     maco._populate(data)
     print(maco.ait)
-    # for i in maco.hash.keys():
-    #     print(i)
-    #     print(maco.hash[i][0].tuple)
     print(len(maco.hash))
-    maco._export_trees(file="ait2.json")
+    maco._export_trees(file="ait3.json")
     print(stats)

@@ -1,1 +1,242 @@
-{"shooting": {"1": {"10": {"fail": 1, "succ": 0, "sucRate": 0.0, "preference": 0.0}}, "2": {"8": {"fail": 1, "succ": 0, "sucRate": 0.0, "preference": 0.0}}}, "passing": {"1": {"1": {"fail": 1, "succ": 0, "sucRate": 7650.0, "preference": 0.5357611436120889}, "4": {"fail": 0, "succ": 1, "sucRate": 10134.0, "preference": 0.0008906574805759202}, "2": {"fail": 0, "succ": 1, "sucRate": 3.0, "preference": 4.797594685748036e-09}, "3": {"fail": 0, "succ": 1, "sucRate": 3.0, "preference": 7.805332878468664e-11}, "5": {"fail": 0, "succ": 1, "sucRate": 3.0, "preference": 7.805332878468666e-15}}}, "dribbling": {"9": {"10": {"fail": 0, "succ": 1, "sucRate": 9798.0, "preference": 0.05117477189977099}}, "8": {"10": {"fail": 0, "succ": 1, "sucRate": 7644.0, "preference": 0.20779750648084355}, "8": {"fail": 1, "succ": 0, "sucRate": 9246.0, "preference": 0.0}, "9": {"fail": 0, "succ": 1, "sucRate": 3.0, "preference": 1.2488532605549866e-13}}, "10": {"10": {"fail": 0, "succ": 1, "sucRate": 8625.0, "preference": 0.0013378028340380159}}, "7": {"10": {"fail": 0, "succ": 1, "sucRate": 8874.0, "preference": 0.19298484063271512}, "9": {"fail": 0, "succ": 1, "sucRate": 3.0, "preference": 6.322319631559621e-13}, "8": {"fail": 0, "succ": 1, "sucRate": 3.0, "preference": 7.805332878468666e-15}}, "6": {"10": {"fail": 0, "succ": 1, "sucRate": 2487.0, "preference": 0.01005327093140759}, "2": {"fail": 1, "succ": 0, "sucRate": 1785.0, "preference": 0.0}, "9": {"fail": 1, "succ": 0, "sucRate": 0.0, "preference": 0.0}, "8": {"fail": 0, "succ": 1, "sucRate": 3.0, "preference": 6.322319631559621e-13}}, "3": {"7": {"fail": 1, "succ": 0, "sucRate": 1596.0, "preference": 0.0}, "10": {"fail": 0, "succ": 1, "sucRate": 3.0, "preference": 6.322319631559621e-13}, "9": {"fail": 1, "succ": 0, "sucRate": 0.0, "preference": 0.0}}, "2": {"9": {"fail": 1, "succ": 0, "sucRate": 0.0, "preference": 0.0}, "10": {"fail": 0, "succ": 1, "sucRate": 3.0, "preference": 7.805332878468666e-15}}, "4": {"10": {"fail": 0, "succ": 1, "sucRate": 3.0, "preference": 1.9981652168879785e-12}, "9": {"fail": 1, "succ": 0, "sucRate": 0.0, "preference": 0.0}, "1": {"fail": 1, "succ": 0, "sucRate": 0.0, "preference": 0.0}, "2": {"fail": 1, "succ": 0, "sucRate": 0.0, "preference": 0.0}, "3": {"fail": 1, "succ": 0, "sucRate": 0.0, "preference": 0.0}, "4": {"fail": 1, "succ": 0, "sucRate": 0.0, "preference": 0.0}, "6": {"fail": 1, "succ": 0, "sucRate": 0.0, "preference": 0.0}, "8": {"fail": 1, "succ": 0, "sucRate": 0.0, "preference": 0.0}, "7": {"fail": 0, "succ": 1, "sucRate": 3.0, "preference": 7.805332878468666e-15}}, "5": {"10": {"fail": 0, "succ": 1, "sucRate": 3.0, "preference": 1.2488532605549862e-09}, "9": {"fail": 0, "succ": 1, "sucRate": 3.0, "preference": 7.805332878468666e-15}}}}
+{
+    "shooting": {
+        "1": {
+            "10": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 0.0,
+                "preference": 0.0
+            }
+        },
+        "2": {
+            "8": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 0.0,
+                "preference": 0.0
+            }
+        }
+    },
+    "passing": {
+        "1": {
+            "1": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 7650.0,
+                "preference": 0.5357611436120889
+            },
+            "4": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 10134.0,
+                "preference": 0.0008906574805759202
+            },
+            "2": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 3.0,
+                "preference": 4.797594685748036e-09
+            },
+            "3": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 3.0,
+                "preference": 7.805332878468664e-11
+            },
+            "5": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 3.0,
+                "preference": 7.805332878468666e-15
+            }
+        }
+    },
+    "dribbling": {
+        "9": {
+            "10": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 9798.0,
+                "preference": 0.05117477189977099
+            }
+        },
+        "8": {
+            "10": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 7644.0,
+                "preference": 0.20779750648084355
+            },
+            "8": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 9246.0,
+                "preference": 0.0
+            },
+            "9": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 3.0,
+                "preference": 1.2488532605549866e-13
+            }
+        },
+        "10": {
+            "10": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 8625.0,
+                "preference": 0.0013378028340380159
+            }
+        },
+        "7": {
+            "10": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 8874.0,
+                "preference": 0.19298484063271512
+            },
+            "9": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 3.0,
+                "preference": 6.322319631559621e-13
+            },
+            "8": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 3.0,
+                "preference": 7.805332878468666e-15
+            }
+        },
+        "6": {
+            "10": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 2487.0,
+                "preference": 0.01005327093140759
+            },
+            "2": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 1785.0,
+                "preference": 0.0
+            },
+            "9": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 0.0,
+                "preference": 0.0
+            },
+            "8": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 3.0,
+                "preference": 6.322319631559621e-13
+            }
+        },
+        "3": {
+            "7": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 1596.0,
+                "preference": 0.0
+            },
+            "10": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 3.0,
+                "preference": 6.322319631559621e-13
+            },
+            "9": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 0.0,
+                "preference": 0.0
+            }
+        },
+        "2": {
+            "9": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 0.0,
+                "preference": 0.0
+            },
+            "10": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 3.0,
+                "preference": 7.805332878468666e-15
+            }
+        },
+        "4": {
+            "10": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 3.0,
+                "preference": 1.9981652168879785e-12
+            },
+            "9": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 0.0,
+                "preference": 0.0
+            },
+            "1": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 0.0,
+                "preference": 0.0
+            },
+            "2": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 0.0,
+                "preference": 0.0
+            },
+            "3": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 0.0,
+                "preference": 0.0
+            },
+            "4": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 0.0,
+                "preference": 0.0
+            },
+            "6": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 0.0,
+                "preference": 0.0
+            },
+            "8": {
+                "fail": 1,
+                "succ": 0,
+                "sucRate": 0.0,
+                "preference": 0.0
+            },
+            "7": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 3.0,
+                "preference": 7.805332878468666e-15
+            }
+        },
+        "5": {
+            "10": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 3.0,
+                "preference": 1.2488532605549862e-09
+            },
+            "9": {
+                "fail": 0,
+                "succ": 1,
+                "sucRate": 3.0,
+                "preference": 7.805332878468666e-15
+            }
+        }
+    }
+}
