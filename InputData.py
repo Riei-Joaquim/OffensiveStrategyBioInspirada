@@ -1,5 +1,7 @@
 from math import trunc
 import numpy as np
+
+
 class InputData:
     def __init__(
             self, ashoot, dshoot, apass, dintp, ddrib, dintd, action, success):
@@ -11,9 +13,15 @@ class InputData:
         self.dintd = dintd
         self.action = action
         self.success = success
+        self.tuple = (ashoot, dshoot, apass, dintp,
+                      ddrib, dintd, action, success)
 
-    def discrete_function(self, func=None):
-        T = 10 
+    def __str__(self):
+        return '(ashoot: {}, dshoot: {}, apass: {}, dintp: {}, ddrib: {}, dintd: {}, action: {}, success: {})'.format(
+            self.ashoot, self.dshoot, self.apass, self.dintp, self.ddrib, self.dintd, self.action, self.success)
+
+    def discrete(self, func=None):
+        T = 10
         maxAngle = np.pi
         maxDist = 30
         dribDist = 3
@@ -41,7 +49,7 @@ class InputData:
 
         # Dribble
         if self.ddrib >= (T - 1) * (dribDist / T):
-            self.ddrib =  T
+            self.ddrib = T
         else:
             self.ddrib = trunc(self.ddrib / (dribDist / T) + 1)
         if self.dintd >= (T - 1) * (dribInt / T):
@@ -57,9 +65,9 @@ class InputData:
         elif self.action == 'Dribbling':
             self.action = 2
 
-        print('Result')
-        print(self.ashoot, self.dshoot, self.apass, self.dintp, self.ddrib, self.dintd, self.action, self.success)
+        self.tuple = (self.ashoot, self.dshoot, self.apass, self.dintp,
+                      self.ddrib, self.dintd, self.action, self.success)
 
-if __name__ == "__main__":
-    example = InputData(0.2, 14.3, 0.3,1.7, 0.7, 0.8, 'Passing', 0)
-    example.discrete_function()
+        # print('Result')
+        # print(self.ashoot, self.dshoot, self.apass, self.dintp,
+        #       self.ddrib, self.dintd, self.action, self.success)
